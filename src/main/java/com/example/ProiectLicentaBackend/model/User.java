@@ -1,7 +1,6 @@
 package com.example.ProiectLicentaBackend.model;
 
 import com.example.ProiectLicentaBackend.model.audit.DateAudit;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.hibernate.annotations.NaturalId;
 
@@ -23,7 +22,6 @@ import java.util.Set;
 })
 
 @Data
-@AllArgsConstructor
 public class User extends DateAudit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,11 +29,15 @@ public class User extends DateAudit {
 
     @NotBlank
     @Size(max = 40)
-    private String name;
+    private String username;
 
     @NotBlank
-    @Size(max = 15)
-    private String username;
+    @Size(max = 40)
+    private String address;
+
+    @NotBlank
+    @Size(max = 20)
+    private String phoneNumber;
 
     @NaturalId
     @NotBlank
@@ -53,14 +55,20 @@ public class User extends DateAudit {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
 
+    public User(@NotBlank @Size(max = 40) String username,
+                @NotBlank @Size(max = 40) String address,
+                @NotBlank @Size(max = 20) String phoneNumber,
+                @NotBlank @Size(max = 40) @Email String email,
+                @NotBlank @Size(max = 100) String password) {git
+        this.username = username;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.password = password;
+    }
+
     //ew User(signUpRequest.getName(), signUpRequest.getUsername(),
     //                signUpRequest.getEmail(), signUpRequest.getPassword());
 
 
-    public User(@NotBlank @Size(max = 40) String name, @NotBlank @Size(max = 15) String username, @NotBlank @Size(max = 40) @Email String email, @NotBlank @Size(max = 100) String password) {
-        this.name = name;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
 }

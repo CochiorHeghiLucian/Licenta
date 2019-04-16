@@ -21,8 +21,6 @@ public class UserPrincipal implements UserDetails {
 
     private Long id;
 
-    private String name;
-
     private String username;
 
     @JsonIgnore
@@ -40,7 +38,7 @@ public class UserPrincipal implements UserDetails {
 
         return new UserPrincipal(
                 user.getId(),
-                user.getName(),
+
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
