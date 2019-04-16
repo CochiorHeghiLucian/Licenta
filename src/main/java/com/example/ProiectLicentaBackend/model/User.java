@@ -59,7 +59,7 @@ public class User extends DateAudit {
                 @NotBlank @Size(max = 40) String address,
                 @NotBlank @Size(max = 20) String phoneNumber,
                 @NotBlank @Size(max = 40) @Email String email,
-                @NotBlank @Size(max = 100) String password) {git
+                @NotBlank @Size(max = 100) String password) {
         this.username = username;
         this.address = address;
         this.phoneNumber = phoneNumber;
